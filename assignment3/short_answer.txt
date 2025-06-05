@@ -5,7 +5,7 @@ Make a Class
 ------------
 
 Q1. What’s const-correctness and why is it important?
-A1. TODO
+A1. Const-correctness is to declare the keyword const when necessary to prevent accidental modifications of the values of variables. It is important because sometimes we don't want certain values to be modified, either by us or the user.
 
 Q2. Is your class const-correct? How do you know?
-A2. TODO
+A2. It is const-correct because the getter functions are declared const at the end to prevent accidental modifications. Other functions are used to modify values of the private member fields so should not be const.

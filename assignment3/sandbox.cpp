@@ -3,6 +3,8 @@
  * Created by Fabio Ibanez with modifications by Jacob Roberts-Baca.
  */
 
+#include "class.h"
+
 void sandbox() {
-  // STUDENT TODO: Construct an instance of your class!
+  Rectangle rec{3.4, 5.6};
 }
