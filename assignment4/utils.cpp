@@ -9,15 +9,7 @@ bool operator<(const Token& a, const Token& b) {
 bool operator<(const Misspelling& a, const Misspelling& b) { return a.token < b.token; }
 
 template <typename Iterator, typename UnaryPred>
-std::vector<Iterator> find_all(Iterator begin, Iterator end, UnaryPred pred) {
-  std::vector<Iterator> its{begin};
-  for (auto it = begin; it != end; ++it) {
-    if (pred(*it))
-      its.push_back(it);
-  }
-  its.push_back(end);
-  return its;
-}
+std::vector<Iterator> find_all(Iterator begin, Iterator end, UnaryPred pred); 
 
 void Token::clean(const std::string& source) {
   auto begin = source.begin() + src_offset;
