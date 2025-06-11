@@ -19,7 +19,21 @@ public:
    * STUDENT TODO:
    * Your custom operators and special member functions will go here!
    */
+  // Overload <<
+  friend std::ostream& operator<< (std::ostream& out, User& user);
 
+  // SMFs
+  ~User();
+  User(const User& user);
+  User& operator=(const User& user);
+  User(User&& user) = delete;
+  User& operator=(User&& user) = delete;
+
+  // Overload +=
+  User& operator+=(User& rhs);
+  // Overload <
+  bool operator<(const User& rhs) const;
+ 
 private:
   std::string _name;
   std::string* _friends;
