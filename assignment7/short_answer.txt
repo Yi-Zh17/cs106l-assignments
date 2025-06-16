@@ -5,13 +5,13 @@ Unique Pointer
 --------------
 
 Q1. List one or two benefits of using RAII to manage memory instead manually calling `new` and `delete`.
-A1. TODO
+A1. Using RAII prevents potential memory leaks. Whenever we add a `new`, we have to call `delete` too somewhere in our code, which makes it hard to manage.
 
 Q2. When implementing move semantics for a `unique_ptr`, for example in the move constructor `unique_ptr(unique_ptr&& other)`, it is essential that we set the underlying pointer of the `other` parameter to `nullptr` before exiting the function. Explain in your own words what problem would arise if we did not.
-A2. TODO
+A2. The pointer will not be unique if we don't set `other.ptr` to `nullptr`. We may modify the pointer by operating on `other`, and the pointer might be deleted when `other` goes out of scope.
 
 Q3. This method of recursive deallocation through RAII works great for small lists, but may pose a problem for longer lists. Why? Hint: what is the limit for how "deep" a recursive function's call stack can grow?
-A3. TODO
+A3. Usually the stack size can contain 20000 ~ 40000 stack calls. If the list is longer the stack cannot hold the data.
 
 Q4. What does `std::move` do in this context? Why is it safe to use `std::move` and move semantics here?
-A4. TODO
+A4. It casts an lvalue to rvalue. It is safe because we are swapping head and node.

@@ -8,7 +8,7 @@
 #include <type_traits>
 #include <vector>
 
-/** STUDENT_TODO: You will need to include a relevant header file here! */
+#include <optional>
 
 #include "autograder/utils.hpp"
 
@@ -52,10 +52,14 @@ public:
    * @param course_title The title of the course to find.
    * @return You will need to figure this out!
    */
-  FillMeIn find_course(std::string course_title)
+  std::optional<Course> find_course(std::string course_title)
   {
-    /* STUDENT_TODO: Implement this method! You will need to change the return
-     * type. */
+    for(int i = 0; i < courses.size(); ++i) {
+      if(courses[i].title == course_title) {
+        return courses[i];
+      }
+    }
+    return std::nullopt;
   }
 
 private:
@@ -81,7 +85,15 @@ main(int argc, char* argv[])
     Please pay special attention to the README here
     ********************************************************/
 
-    std::string output = /* STUDENT_TODO */
+    std::string output = course
+        .and_then([](Course cs) -> std::optional<std::string> {
+          return "Found course: " + cs.title + "," + cs.number_of_units
+          + "," + cs.quarter + "\n";
+        })
+        .or_else([]() -> std::optional<std::string> {
+          return "Course not found.";
+        })
+        .value();
 
     /********************************************************
      DO NOT MODIFY ANYTHING BELOW THIS LINE PLEASE
